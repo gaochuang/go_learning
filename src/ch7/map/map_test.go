@@ -29,7 +29,6 @@ func TestNoKey(t *testing.T) {
 	//key不存在，返回0
 	t.Log(m1[5])
 	m1[5] = 0
-	//初始化key==5的value为0，怎么判断key是否存在？
 	t.Log(m1[5])
 
 	//返回两个变量，value和一个bool类型，true代表key存在
@@ -47,4 +46,33 @@ func TestFactoryMode(t *testing.T) {
 	m1[3] = func(op int) int { return 2 * op }
 
 	t.Log(m1[1](2), m1[2](3), m1[3](100))
+}
+
+func TestSetDeamon(t *testing.T) {
+
+	MySet := make(map[int]bool)
+
+	MySet[1] = true
+
+	n := 3
+	if MySet[3] {
+		t.Logf("%d is existing", n)
+	} else {
+		t.Logf("%d is not exiting", n)
+	}
+
+	MySet[3] = true
+
+	t.Log(len(MySet))
+
+	if MySet[3] {
+		t.Logf("%d is existing", n)
+	} else {
+		t.Logf("%d is not exiting", n)
+	}
+
+	delete(MySet, 1)
+
+	t.Log(len(MySet))
+
 }
