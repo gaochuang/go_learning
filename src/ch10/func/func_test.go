@@ -16,23 +16,46 @@ func TestFn(t *testing.T) {
 	t.Log(a, b)
 }
 
-func slowFunc(op int) int {
-	time.Sleep(time.Second * 1)
-	return op
+func SlowFn(n int) int {
+	time.Sleep(5)
+	return n
 }
 
-//类似装饰者模式
-func FuntionSpend(runner func(op int) int) func(op int) int {
+func functionSpentTime(runner func(n int) int) func(n int) int {
+
 	return func(n int) int {
 		startTime := time.Now()
 		ret := runner(n)
-		fmt.Println("time spend: ", time.Since(startTime).Seconds())
+		fmt.Printf("Spent time is %+v", time.Since(startTime).Seconds())
 		return ret
 	}
 }
 
-//函数式编程
-func TestFn1(t *testing.T) {
-	tsSF := FuntionSpend(slowFunc)
-	t.Log(tsSF(10))
+func TestFn2(t *testing.T) {
+	fn := functionSpentTime(SlowFn)
+	fmt.Println(fn(10))
+}
+
+func Sum(ops ...int) int {
+	var ret int
+	ret = 0
+	for _, op := range ops {
+		ret += op
+	}
+	return ret
+}
+
+func TestVarParam(t *testing.T) {
+	t.Log(Sum(1, 2, 3, 4))
+}
+
+func TestDeferFunction(t *testing.T) {
+	defer func() {
+		t.Log("This is defer function")
+	}()
+
+	t.Log("Start")
+	panic("panic err happend")
+
+	t.Log("end") //不会被打印
 }
