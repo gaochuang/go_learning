@@ -23,7 +23,7 @@ type JavaProgrammer struct {
 func (p *JavaProgrammer) WriteHelloWorld() Code {
 	return "java.out.print(hello world)"
 }
-
+/*入参必须是指针*/
 func WriteFirstProgrammer(p Programmer) {
 	fmt.Printf("%T %v\n", p, p.WriteHelloWorld())
 }
@@ -31,6 +31,7 @@ func WriteFirstProgrammer(p Programmer) {
 func TestPolymorphism(t *testing.T) {
 	goprammer := new(GoProgrammer)
 	javaprommer := new(JavaProgrammer)
+	/*传入的必须是指针*/
 	WriteFirstProgrammer(goprammer)
 	WriteFirstProgrammer(javaprommer)
 }
