@@ -22,6 +22,7 @@ func provider(ch chan int, wg *sync.WaitGroup) {
 		}
 		close(ch)
 		wg.Done()
+
 	}()
 
 }
