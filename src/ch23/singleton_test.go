@@ -1,3 +1,7 @@
+/*
+goroutine并发模式--只运行一次
+
+*/
 package ch23_test
 
 import (
