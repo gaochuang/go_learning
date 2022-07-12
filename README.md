@@ -12,3 +12,4 @@
 ## ch9 strust
 ## ch25 对象池
 ## ch14、ch26 反射编程
+## ch27 万能程序(reflect实现)
