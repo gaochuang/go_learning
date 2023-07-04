@@ -4,6 +4,8 @@ package main
 import (
 	"import_test/lib1"
 	"import_test/lib2"
+	_ "import_test/lib2" //匿名导包，可以只使用lib2的init方法，不适用其它方法
+	//  . "import_test/lib2" 把整个包导入到当前包
 )
 
 func main() {
