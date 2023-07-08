@@ -41,12 +41,12 @@ type SuperMan struct {
 	level int
 }
 
-// superman的新方法
+// 子类，superman的新方法
 func (this *SuperMan) Fly() {
 	fmt.Println("I'm sumpperMan, I can fly")
 }
 
-//superman 重写Walk方法
+//子类 superman 重写父类Walk方法
 func (this *SuperMan) Walk() {
 	fmt.Println("I'm supperman, I can fly, needn't walk")
 }
